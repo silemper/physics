@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h2> Physics Quiz</h2>
+    </div>
+    
+    <div class="timer">Time Left: <span id="time">30:00</span></div>
+    
+    <div class="container">
+        <div class="question-panel">
+            <h3 id="question-number">Question 1</h3>
+            <p id="question-text"></p>
+        </div>
+        
+        <form id="quiz-form">
+            <div class="options-panel" id="options-panel">
+                <!-- Radio buttons will be inserted here -->
+            </div>
+        </form>
+        
+        <div class="explanation-panel" id="explanation-panel" style="display: none;">
+            <h3>Results</h3>
+            <div id="explanation-content"></div>
+        </div>
+
+        <div class="button-panel">
+            <div class="question-buttons" id="question-buttons"></div>
+            <button type="button" onclick="submitQuiz()" class="submit-btn">Submit Quiz</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

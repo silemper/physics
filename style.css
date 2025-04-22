@@ -1,0 +1,259 @@
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+.timer {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    background: #2c3e50;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.question-panel {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.question-panel h3 {
+    color: #2c3e50;
+    margin-top: 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.options-panel {
+    margin: 25px 0;
+}
+
+.option-item {
+    display: block;
+    position: relative;
+    padding: 15px 15px 15px 50px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    background: white;
+    border-radius: 8px;
+    transition: all 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.option-item:hover {
+    background: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.option-item input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.radio-checkmark {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    height: 22px;
+    width: 22px;
+    background-color: #eee;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    transition: all 0.2s;
+}
+
+.option-item:hover .radio-checkmark {
+    border-color: #3498db;
+}
+
+.option-item input:checked ~ .radio-checkmark {
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+.radio-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 5px;
+    left: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: white;
+}
+
+.option-item input:checked ~ .radio-checkmark:after {
+    display: block;
+}
+
+/* Navigation Buttons - Updated with answer indicators */
+.question-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.question-btn {
+    position: relative;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    background: white;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.question-btn:hover {
+    background: #f1f1f1;
+}
+
+.question-btn.active {
+    background: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+.question-btn.answered {
+    background: #2ecc71;
+    color: white;
+    border-color: #27ae60;
+}
+
+.question-btn.answered::after {
+    content: "✓";
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.question-btn.answered:hover {
+    background: #27ae60;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.submit-btn:hover {
+    background: #1a252f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.explanation-panel {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border-left: 4px solid #3498db;
+}
+
+.question-review {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.question-review.correct {
+    background: rgba(46, 204, 113, 0.1);
+    border-left: 4px solid #2ecc71;
+}
+
+.question-review.incorrect {
+    background: rgba(231, 76, 60, 0.1);
+    border-left: 4px solid #e74c3c;
+}
+.question-btn {
+    -webkit-tap-highlight-color: transparent; /* Remove blue tap highlight on iOS */
+    touch-action: manipulation; /* Improve touch responsiveness */
+}
+
+.option-item {
+    user-select: none; /* Prevent text selection on tap */
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        margin: 20px auto;
+        padding: 10px;
+    }
+    
+    .question-panel, .options-panel, .explanation-panel {
+        padding: 15px;
+    }
+    
+    .option-item {
+        padding: 10px 10px 10px 10px 5px;
+    }
+    
+    .question-btn {
+        padding: 5px 5px; /* Larger touch targets */
+        font-size: 14px;
+        min-width: 30px; 
+        min-height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+}
+    .question-btn.answered {
+        background: #2ecc71;
+        box-shadow: 0 2px 5px rgba(46, 204, 113, 0.3); /* More visible */
+    }
+    
+    .question-btn.answered::after {
+        content: "✓";
+        font-size: 16px; /* Larger checkmark */
+        margin-left: 3px;
+    }
+    
+    .option-item {
+        padding: 20px 20px 15px 50px; /* Larger touch targets */
+        margin-bottom: 10px;
+    }
+    .option-item {
+       -webkit-tap-highlight-color: transparent;
+       touch-action: manipulation;
+   }
+   
+   .option-item:active {
+       transform: scale(0.98);
+       background: #f0f0f0;
+   }
+    
+}
